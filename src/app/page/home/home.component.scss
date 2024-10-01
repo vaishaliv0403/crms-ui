@@ -1,0 +1,46 @@
+
+
+.table td, .table th {
+    //padding: 5px 10px; /* Adjust padding to reduce row height */
+    font-size: 14px;   /* Optionally reduce the font size */
+    --bs-border-radius-xl: 5px;
+  }
+
+  .table {
+    font-size: 14px; /* Set a smaller font size for the table */
+  }
+
+  .pagination {
+    .page-item {
+      .page-link {
+        color: gray; // Set the default pagination font color to gray
+  
+        &:hover {
+          color: darkblue; // Change color on hover
+        }
+      }
+  
+      // Highlight the active page
+      &.active .page-link {
+        // background-color: darkblue;
+        // border-color: darkblue;
+        //color: white; // Text color for the active page
+          background-color: white;
+         border-color: lightgray;
+        color: darkblue; 
+      }
+    }
+  
+    // Style for disabled page items (e.g., previous/next buttons when inactive)
+    .disabled .page-link {
+      color: lightgray; // Light gray for disabled links
+      pointer-events: none; // Disable clicks
+    }
+  }
+  .dropdown-center {
+    .dropdown-menu {
+      width:65%;  // Make the dropdown menu width match the button width
+      min-width: auto;  // Ensure it doesn't shrink smaller than the button
+      
+    }
+  }

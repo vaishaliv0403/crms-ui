@@ -1,0 +1,90 @@
+<div class="content fs-7">
+        <div class="col-12 mt-4 mb-2 d-flex justify-content-between align-items-center">
+          <div class="d-flex align-items-center">
+              <a href="#" class="text-reset" style="text-decoration: none;">
+                  <i class="bi bi-caret-left-fill"></i>
+              </a>
+              
+              <span class="separator ms-3 me-1" style="font-weight:600;">001</span>
+              <span class="separator me-3">(Customer1)</span>
+
+              <div>
+                
+                  <form >
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="listOptions" id="utrOption" value="utr" [(ngModel)]="selectedOption" (change)="onRadioChange($event)">
+                      <label class="form-check-label" for="utrOption">
+                        UTR
+                      </label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="listOptions" id="sicrOption" value="sicr" [(ngModel)]="selectedOption" (change)="onRadioChange($event)">
+                      <label class="form-check-label" for="sicrOption" >
+                        SICR
+                      </label>
+                    </div>
+                  </form>
+                
+              </div>
+              
+               </div>
+          <div class="p-2">
+              <button type="button" class="btn btn-sm mx-3" 
+                      style="background-color: rgb(196, 223, 246); font-weight: bold;">    
+                  Submit    
+              </button>
+          </div>
+      </div>
+      <div class="table-responsive card rounded-4" style="border: none;"> 
+        <table class="table rounded-4 table-sm mb-0">
+          <thead >
+            <tr >
+              <th scope="col" style="background-color: #f9f9f9" class="p-2 px-2">Sr No</th>
+              <th scope="col" style="background-color: #f9f9f9" class="p-2">Questions</th>
+              <th scope="col" style="background-color: #f9f9f9" class="text-center px-5">Value</th>
+              <th scope="col" style="background-color: #f9f9f9" class="text-center"></th>
+            </tr>
+          </thead>
+          <tbody class="p-2">
+            <tr *ngFor="let question of paginatedQuestions; let i = index">
+              <td class="px-3" style="color: #706f6f;" scope="row">{{ question.id }}</td>
+              <td style="color: #706f6f;">{{ question.question }}</td>
+              <td style="color: #706f6f;" class="text-center">{{ question.value }}</td>
+              <td>
+                <div>
+                  <a href="#" class="btn btn-sm me-2 p-0" data-bs-toggle="modal" data-bs-target="#exampleModal" style="color: #0F67B1;" aria-expanded="false">
+                    Edit
+                  </a>
+                  <app-comment-box></app-comment-box>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+       </div>
+      </div>
+
+  
+      <footer class="mt-2">
+        <nav aria-label="Page navigation" style="color: #04589d;">
+          <ul class="pagination justify-content-center" >
+            <li class="page-item" [class.disabled]="currentPage === 1">
+              <a class="page-link" (click)="previousPage()" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+              </a>
+            </li>
+
+       <!-- Dynamically generate page numbers with a maximum of 3 -->
+       <li class="page-item" *ngFor="let page of visiblePages" [class.active]="currentPage === page">
+        <a class="page-link" (click)="loadPage(page)">{{ page }}</a>
+      </li>
+
+            <li class="page-item" [class.disabled]="currentPage === totalPages">
+              <a class="page-link" (click)="nextPage()" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </footer>
+      

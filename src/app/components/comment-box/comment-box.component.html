@@ -1,0 +1,102 @@
+<!-- Button trigger modal -->
+<!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Launch demo modal
+  </button> -->
+  
+  <!-- Modal -->
+  <div class="modal fade fs-7" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-6" id="exampleModalLabel">Is there a history of regulatory issues affecting the customer's business? </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body pb-2">
+          <!-- for new comment -->
+          <form>
+            <div class="mb-0 ">
+              <label for="recipient-name" class="col-form-label">Update Value : </label>
+              <span class="separator me-5"></span>
+             
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"checked>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  Y
+                </label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
+                <label class="form-check-label" for="flexRadioDefault2">
+                  N
+                </label>
+              </div>
+            </div>
+            <div class="mb-1 mt-0">
+              <label for="message-text" class="col-form-label">Comment:</label>
+              <textarea class="form-control" id="message-text"></textarea>
+            </div>
+          </form>
+
+          <hr>
+
+            <!-- for prev comment -->
+            <!-- <p class="fs-7">Previous Comments</p> -->
+            <div class="table-responsive card rounded-4 mt-0" style="border: none; overflow: hidden;"> 
+              <table class="table table-sm table-hover rounded-4 mb-0">
+                <thead >
+                  <tr class="fs-7">
+                    <th scope="col" style="background-color: #f9f9f9;  width: 10%;" class="p-2 px-2">Sr No</th>
+                    <th scope="col" style="background-color: #f9f9f9;  width: 60%;" class="p-2">Comment</th>
+                    <th scope="col" style="background-color: #f9f9f9;  width: 20%;" class="p-2">Added by</th>
+                    <th scope="col" style="background-color: #f9f9f9;  width: 10%;" class="text-center"> Value</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let question of paginatedQuestions; let i = index">
+                    <td class="px-3" style="color: #706f6f;  width: 10%;" scope="row">{{ question.id }}</td>
+                    <td style="color: #706f6f;  width: 60%;">{{ question.comment }}</td>
+                    <td style="color: #706f6f; width: 20%;">{{ question.added_by }}</td>
+                    <td style="color: #706f6f; width: 10%;" class="text-center">{{ question.value }}</td>
+                  </tr>
+                </tbody>
+              </table>
+             </div>
+             <footer class="mt-2 " >
+              <nav aria-label="Page navigation" style="color: blue;">
+                <ul class="pagination justify-content-center mb-0">
+                  <li class="page-item" [class.disabled]="currentPage === 1" >
+                    <a class="page-link" (click)="previousPage()" aria-label="Previous">
+                      <span aria-hidden="true">&laquo;</span>
+                    </a>
+                  </li>
+      
+             <!-- Dynamically generate page numbers  -->
+             <li class="page-item"  [class.active]="currentPage">
+              <a class="page-link" (click)="loadPage(currentPage)">{{ currentPage }}</a>
+            </li>
+      
+                  <li class="page-item" [class.disabled]="currentPage === totalPages">
+                    <a class="page-link" (click)="nextPage()" aria-label="Next">
+                      <span aria-hidden="true">&raquo;</span>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
+            </footer>
+            
+            
+
+            
+          
+
+
+        
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Add comment</button>
+        </div>
+      </div>
+    </div>
+  </div>
